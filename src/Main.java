@@ -1,4 +1,6 @@
+import java.text.NumberFormat;
 import java.util.Arrays;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -20,5 +22,23 @@ public class Main {
         System.out.println(PI);
         System.out.println(++age);
         System.out.println(magicNumber);
+
+//        Mortgage Calculator
+        System.out.println("Welcome to Mortage Calculator");
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter principle amount: ");
+        int principalAmt = scan.nextInt();
+        int MONTHS = 12;
+        int PERCENTAGE = 100;
+        System.out.print("Enter Interst Rate: ");
+        float interstRate = scan.nextFloat();
+        interstRate  = interstRate / MONTHS / PERCENTAGE;
+        System.out.print("Enter Period (Years): ");
+        int periodYear = scan.nextInt();
+        int n = periodYear * MONTHS;
+
+        double total = principalAmt * (interstRate * Math.pow(1+ interstRate,n)) / Math.pow(1+interstRate, n)- 1;
+        String result = NumberFormat.getCurrencyInstance().format(total);
+        System.out.println("Computed Value is: "+ result);
     }
 }
